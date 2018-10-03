@@ -1,0 +1,18 @@
+
+    <h5>This is the <b>Users Component</b></h5><br>
+    <h4>Child Routes in Angular</h4> 
+    1.Now we add Components under the main Component that is called <b>Child Component</b><br><br>
+    2.Add child components like <b> path:'users',component:UsersComponent,
+            children: [
+              path:'normal-user',component:NormalUserComponent,
+              path:'admin',component:AdminUserComponent
+            ]
+          
+          },</b><br><br>
+    3.Then add buttons for do this on <b>Click function</b> on this function code like this <b> this.router.navigate(['normal-user'],relativeTo:this.route);</b> <br><br> 
+    4.Dont forget to add <b>router-outlet</b> <br><br>
+    5.The following example for <b>Child Component</b>  <br><br> 
+<p>
+<button type="button" class="btn btn-success" (click)="gonormaluser()">Normal User</button> &nbsp;
+<button type="button" class="btn btn-success" (click)="goadminuser()">Admin User </button></p>
+<router-outlet></router-outlet>

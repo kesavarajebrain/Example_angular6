@@ -1,0 +1,264 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1><u>Angular 6 Basic Examples</u></h1>
+ </div>
+ <div class="container">
+ INTERPOLATION FROM TS : Welcome to  <b>|{{ title +  interpolation}}|</b><br><br> 
+ INTERPOLATION with Math  : Add <b>{{5+5}}</b>|  Sub <b>{{1020-190}}</b>|  Multi <b>{{Multi}}</b>| Div <b>{{Div}}</b>
+<br><br>
+INTERPOLATION with Property : Interpolate Value -<b>{{property}}</b>| Interpolate Value Length -<b>{{property.length}}</b> | Interpolate Value Uppercase - <b>{{property.toUpperCase()}}</b> <br><br>
+
+INTERPOLATION with Function: {{interpolatefun()}}
+<hr>
+<app-first></app-first>
+<hr>
+<u>Property Binding from 2nd component template </u>
+<app-second></app-second>
+<br><br>
+<u>Two Way Binding from App Component</u>
+<br><br>
+<input [(ngModel)]="name" type="text" #inputValue (keyup)="ontype(inputValue.value)"><br>
+{{name}} 
+<br>
+<u>ngIf Static-Example</u>
+<div *ngIf="condition; then firstBlock; else secondBlock;"></div>
+<ng-template #firstBlock>
+<h3>Condition True</h3>
+</ng-template>
+<ng-template #secondBlock>
+    <h3>Condition False</h3>
+  </ng-template>
+
+  <u>ngIf Dynamic-Example</u>
+  <br> <br>
+  <div>Enter Age:	<input type="text" [(ngModel)] = 'age'> </div> <br/>
+  <div *ngIf="age >= 18; then rightBlock; else wrongBlock"></div>   
+  <ng-template #rightBlock>
+     <b>Eligible to vote.</b>
+  </ng-template> 
+  <ng-template #wrongBlock>
+      <b>Not eligible to vote.</b>
+   </ng-template> 
+
+   <br> <br>
+  <div>Enter Name:	<input type="text" [(ngModel)] = 'typename'> </div> <br/>
+  <div *ngIf="typename=='kesav'; then right; else wrong"></div>   
+  <ng-template #right>
+     <b>Right Name.</b>
+  </ng-template> 
+  <ng-template #wrong>
+      <b>Wrong Name.</b>
+   </ng-template> 
+
+   <br> <br>
+   <u>ngSwitch Static-Example</u>
+   <br><br>
+   <div [ngSwitch]="color">
+     <div *ngSwitchCase="'red'">You Picked Red</div>
+     <div *ngSwitchCase="'blue'">You Picked blue</div>
+     <div *ngSwitchCase="'yellow'">You Picked yellow</div>
+     <div *ngSwitchDefault>Declare In TS</div>
+   </div>
+
+   <br> <br>
+   <u>ngSwitch Dynamic-Example</u>
+   <br><br>
+   <div [ngSwitch]="current">
+     <div *ngSwitchCase= "'Sunday'" >You Picked Red</div>
+     <div *ngSwitchCase="'Monday'">You Picked blue</div>
+     <div *ngSwitchCase="'Tuesday'">You Picked yellow</div>
+     <div *ngSwitchCase="'Wednesday'">You Picked yellow</div>
+     <div *ngSwitchCase="'Thursday'">You Picked yellow</div>
+     <div *ngSwitchCase="'Friday'">You Picked yellow</div>
+     <div *ngSwitchCase="'Saturday'">You Picked yellow</div>
+     <div *ngSwitchDefault>Declare In TS</div>
+   </div>
+
+   <br> <br>
+   <u>ngFor Static Example</u>
+   <br><br>
+   <div *ngFor="let name of cars; index as j">
+     <li>{{j}} -{{name}}</li>
+     </div>
+
+     <br> <br>
+    <u> Component Interaction</u><br> 
+     Passing data from Parent to Child we use @Input() - Decorator<br> 
+ <app-third  [sendingData]="DisplayName"></app-third> <br>
+ Passing data from Child to Parent we use @Output() - Decorator
+ <app-fourth (passdata)="message=$event"></app-fourth>
+{{message}}
+
+ <br><br>
+<u>Built in Pipes</u> - used for data converstion for presenting view
+<br><br>
+Acutual text - <b>{{Name}}</b><br>
+Uppercase - <b>{{Name | uppercase}}</b><br>
+Lowercase - <b>{{Name | lowercase}}</b><br>
+Capitalize - <b>{{Name | titlecase}}</b><br>
+Slice - <b>{{Name | slice:3}}</b><br>
+JSON Format - <b>{{format | json}}</b><br><br>
+
+Actual date- <b>{{date}}</b><br>
+Short - <b>{{ date | date:'short'}}</b><br> 
+ ShortDate - <b>{{date | date:'shortDate'}}</b><br>
+ShortTime - <b>{{date | date:'shortTime'}}</b><br> 
+
+<br><br>
+<u>Service in Angular - Why Service?</u> <br>
+Dont Repeat same code frequently in various components<br>
+Write once use it various components (providing data for various components) thats <b>SERVICE</b><br><br>
+How to create a Service?<br>
+1. In Terminal <b>ng g s servicename</b><br>
+2. Put the service name in <b>App.Module.ts</b> file like <b>providers: [servicename]</b> and also import it on top of the file.<br>
+3. Then import service in ts file (our required component) and also declare it like <b>constructor(private _sampleservice:SampleService)</b> same file.
+<br><br>
+The following example a <b>Hardcoded Data</b> in the service layer from <b>sample.service.ts to app.componenent.html</b> 
+<!-- <div *ngFor="let data of servicedata">
+<li>{{data.Slno}} {{data.Product}}  {{data.Price}} </li>
+    </div> -->
+ <table style="width: 50%" >
+        <tr>
+          <th>Sl.No</th>
+          <th>Product</th> 
+          <th>Price</th>
+         </tr>
+        <tr *ngFor="let data of servicedata">
+            <td>{{data.Slno}} </td>
+             <td>{{data.Product}}</td>
+          <td>{{data.Price}} </td>
+        </tr>
+    </table>
+    <br><br>
+    The following example a <b>Dynamic Data</b>
+    <br><br>
+    How to do it?<br><br>
+    1.Import HttpClientModule in <b>App.module.ts</b>( Httpmodule used in previous versions like angular 4,5) like <b>import HttpClientModule from '@angular/common/http';</b> also add it in <b>imports</b> section<br><br>
+    2.Import HttpClient in our <b>Service.ts</b> file. like <b>import HttpClient from '@angular/common/http';</b><br><br> 
+    3.Import Observable in our <b>Service.ts</b> file.like <b>import Observable from 'rxjs/Observable';</b><br><br>
+    4.If any error install <b>npm install rxjs-compat --save</b><br><br>
+    5.Then create INSTANCE in constructor <b> constructor(private http:HttpClient )</b> in <b>service.ts</b><br><br>
+    6.Declare <b>Dynamic data URL</b> like <b> private _url:string="/assets/sampledata/sample.data.json";</b>  (in here we have created a sample JSON file)<br><br>
+    7.Create a ts.file <b>Its also called MODEL</b> for Denoting interface for URL Response like <br> <b>export interface student
+      RollNo:number,
+      StudentName:string,
+      Mark:number</b><br><br>
+    Here the example get data from <b>local.Json</b> file.<br><br>
+  
+
+    <table style="width: 50%" >
+        <tr>
+          <th>Roll.No</th>
+          <th>StudentName</th> 
+          <th>Mark</th>
+         </tr>
+        <tr *ngFor="let student of studentdata">
+            <td>{{student.RollNo}} </td>
+             <td>{{student.StudentName}}</td>
+          <td>{{student.Mark}} </td>
+        </tr>
+    </table>
+    {{errormsg1}}
+    <br><br>
+
+  
+   <h4><u>Error Handling</u> </h4>
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* If we get a error from url response we have to display it what kind of error comes so we use <b>Error Handling</b>
+   <h4>How? </h4>
+   1.Open <b>Service.ts </b> file and import <b>import catchError from 'rxjs/operators';</b> and also import <b>import throwError as observableThrowError, Observable from 'rxjs';</b><br><br>
+   2.Add this <b>return this.http.get student[] (this._errorurl).pipe(
+    catchError(this.errorHandler));</b><br><br>
+    3.<b>Error handler</b> function look like this <b> errorHandler(error: HttpErrorResponse)
+        return observableThrowError(error.message || "Server Error");
+   </b><br><br>
+   4.Then get error in to our <b>TS file</b> by like <b> .subscribe(data=>this.studentdata = data,
+    error => this.errormsg = error);</b> under the <b>service integrated function</b><br><br>
+  5.Now define globally <b>Error Msg</b> in <b>TS file </b> for display the error in our <b>HTML </b> file. like <b>public errormsg;</b>.<br><br>
+  6.Finally display error msg as interpolation.<br><br>
+In here a sample <b>Error Message</b> file not found.<br><br>
+<b>{{errormsg}}</b>
+
+<h3><u>Routing in Angular</u></h3>
+Basic steps of Routing<br><br>
+1.First create a new routing option enabled project by execute cmd <b>ng new projectname --routing</b> by creating like this it will automatically created <b>App.routing.ts</b> file itself.<br><br>
+2.In other case we have existing project without routing option follow these steps.<br><br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Open index.html and ensure there is a <b> base href="/" </b> tag at the top of the head section.<br><br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* In the root directory of the application, run the command:<b>  ng g module app-routing.</b><br><br> 
+3.Now open <b>App.routing.ts</b> and <b>import  RouterModule, Routes  from '@angular/router';</b><br><br>
+4.Then Declare it <b>imports: [
+    CommonModule,
+    RouterModule.forRoot(routes)
+    ],
+    exports: [
+    RouterModule
+    ],</b> <br><br>
+5.Then Create Components what we need and import it.<br><br>
+6.Now Define the <b>Path in App.routing.ts</b> like <b>const routes: Routes = [
+    path:'dashboard',component: DashboardComponent,
+    path:'users',component:UsersComponent 
+  ];</b><br><br>
+7.Then add <b>export const routingComponents = [DashboardComponent,UsersComponent]</b> in <b>App.routing.ts</b> because we declare all routing components here we dont need to import same in <b>App.module.ts</b> like this 
+<b>import AppRoutingModule, routingComponents from './app-routing/app-routing.module'; </b> <br><br>
+8.Dont forget to add <b> router-outlet /router-outlet </b> tag in html file our component will render in that tag. <br><br>
+
+<h3><u>Wildcard Routing</u></h3> 
+1.If we type wrong url path follwed by <b>'/'</b> we will show a message <b>Page Not Found</b> so we use it.<br><br>
+2.By adding this <b>path:'**',component:PageNotFoundComponent</b> in <b>App.routing.ts</b> file. It declare at the end of the components declarations.<b>Dont add it earlier</b> beacause it works all the times when page is loaded.<br><br>
+3.Now we do another one thing if our url like <b>http://localhost:4200</b> without any specific path we define if empty url comes what page will render so, add <b> path:'',redirectTo:'/dashboard',pathMatch:'full'</b> this empty url path comes it <b> redirectTo </b> what component we defined.<b>pathMatch</b> have a two property like <b>prefix , full</b> full means full path is empty.<br><br>
+
+<h3><u>Passing Parameter in URL</u></h3> 
+1.Create a list (in here is the example) and write a <b>(Click) function </b>on the iterated lists
+and passing parameter like <b>(click)="onSelect(getpage)"</b> getpage denoted <b>*ngFor="let getpage of rdata"</b>
+<br><br>
+2.Add codes in the function like <B>onSelect(getpage)
+    this.router.navigate(['/dashboard',getpage.id]);
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.pageid = id;
+  </B> and also import <b>import ActivatedRoute from '@angular/router'</b> in ou corresponding <b>TS.file</b><br><br> 
+  3.<b>snapshot.paramMap</b> is used for get data from URL.<br><br>
+  4.Finally add <b>path:'dashboard/:id',component:CompanydetailsComponent</b> in <b>App.routing.ts</b><br><br>
+
+  <h3><u>Params In Angular</u></h3>
+  1. Add the function Buttons like <b>Prev and Next</b><br><br>
+  2.Let write in the function button (Prev Button) <b>let prevbtn = this.pageid - 1;
+      this.router.navigate(['/dashboard',prevbtn]);</b><br><br>
+  3.Then write in the function button (Next Button) <b>let nxtbtn = this.pageid + 1;
+      this.router.navigate(['/dashboard',nxtbtn]);</b><br><br>
+  4.Now write code in <b>ngOnInit()</b> in same <b>TS.file</b><br><br>
+  5.On the <b>ngOnInit</b> put the code like <b> this.route.paramMap.subscribe((params:ParamMap) =>
+      let id = parseInt(params.get('id'));
+      this.pageid = id;</b><br><br>
+  6.<b>Params</b> is used for overcome the <b>snapshot</b> probelms <br><br>
+  7.On url will change based on ID but in the component view not possible for change so overcome this we use <b>Parms.</b> <br><br>
+
+  <h3><u>Relative Navigation</u></h3> 
+  1.If we change our component name in <b>App.routing.ts</b> after some time we want change in all components which is changed in app.routing.ts so overcome this so we use <b>Relative Navigation</b><br><br>
+  2.Like this <b>this.router.navigate([getpage.id],relativeTo: this.route);</b><br><br>
+
+Here the simple example of<b> ROUTING IN ANGULAR</b>
+
+<br><br>
+   <nav>
+      <button  routerLink="/dashboard" routerLinkActive="Active" type="button" class="btn btn-primary">Dashboard</button> &nbsp; 
+      <button  routerLink="/users"  type="button" class="btn 
+      btn-primary">Users</button>
+
+   </nav>
+   <router-outlet></router-outlet>
+   <br><br>
+
+  <h4><u>Angular 6 ?</u></h4> <br>
+  1.Angular 6 comes with all branch upadtions like <b>Angular framework , CLI, Angular Material</b><br><br>
+  2.We use animations we import from <b>@angular/core</b> in earlier version but now import from <b>@angular/animations</b><br><br>
+  3.<b>ng-template</b> tag changed now <b>template</b><br><br>
+  4.Before that we register service in providers section now service file contains a buit in option <b>providedIn:'root' </b> now no need to add <b>service</b> in provider section in <b>App.module.ts</b><br><br>
+  5.In Angular 6 we can easily modify changes by <b>ng update</b> which is update our <b>package.json</b> file and providing updates for our application.<br><br>
+  6.Another one is <b>ng add</b> if we add a new module in existing project by run yhis command.<br><br>
+  7.Finally <b>Ivy</b> is used for increase speed of application and reduced the file size but it not integrated now this on stand-by.<br><br>
+
+  <h4><u>Upgrading Angular 6 ?</u> </h4><br>
+  1. Use the official site for upgrading Angular <a>https://update.angular.io/</a><br><br>
+  2.At last remove <b>Rxjs</b> by <b>npm uninstall rxjs-compat</b><br><br>
+
+  <br><br><br><br>
+</div>

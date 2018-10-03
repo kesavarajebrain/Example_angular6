@@ -1,0 +1,19 @@
+<p>
+  second works!
+</p>
+  <h2>Hai</h2> 
+
+  <input type="text" value="Sample">
+  <input [disabled]="true" type="text" value="Sample"> 
+  <input [disabled]="true" type="text" value={{name}}>
+
+   <p>Event Binding</p>   
+  <button (click)="clickFun()">Click</button>  
+
+ 
+ 
+  <p>Template Reference </p> 
+  <input type="text" #typeInput> 
+  <button (click)="clickFuntwo(typeInput.value)">Press Me </button>
+ 
+ 

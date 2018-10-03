@@ -1,0 +1,16 @@
+
+  <h5>This is the <b>Dashboard Component</b> </h5>
+
+  <ul class="list-group">
+     
+    <li style="cursor: pointer;" (click)="onSelect(getpage)" class="list-group-item" 
+    [class.selected] = "isSelected(getpage)" *ngFor="let getpage of rdata"><span class="badge">{{getpage.id}}</span>{{getpage.pagename}}</li>
+      
+    </ul>
+    You selected page id is {{pageid}}<br>
+    <a (click)="prev()" style="cursor: pointer;" ><span class="badge">Prev</span></a>  &nbsp; 
+    <a (click)="next()" style="cursor: pointer;" ><span class="badge">Next</span></a>
+    
+    &nbsp;   <button type="button" (click)="backbtn()" class="btn btn-primary">Back</button> 
+   
+    
