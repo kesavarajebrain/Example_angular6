@@ -41,7 +41,7 @@ INTERPOLATION with Function: {{interpolatefun()}}
    </ng-template> 
 
    <br> <br>
-  <div>Enter Name:	<input type="text" [(ngModel)] = 'typename'> </div> <br/>
+  <div>Enter Name:	<input type="text" [(ngModel)] = 'typename'> <span>  Type <span style="color:red;">       "Kesav"</span></span>  </div><br/>
   <div *ngIf="typename=='kesav'; then right; else wrong"></div>   
   <ng-template #right>
      <b>Right Name.</b>
