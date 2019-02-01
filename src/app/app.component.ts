@@ -10,6 +10,9 @@ export class AppComponent {
 
   //interpolation
   title = 'app';
+  name:any;
+  age:any;
+  typename:any;
   myname='kesavaraj';
   interpolation='This is a example interpolation';
   Div = 50/3;
