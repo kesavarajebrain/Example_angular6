@@ -18,7 +18,7 @@ INTERPOLATION with Function: {{interpolatefun()}}
 <u>Two Way Binding from App Component</u>
 <br><br>
 <input [(ngModel)]="name" type="text" #inputValue (keyup)="ontype(inputValue.value)"><br>
-{{name}} 
+<p style="color: red;font-size: 20px;">{{name}} </p>
 <br>
 <u>ngIf Static-Example</u>
 <div *ngIf="condition; then firstBlock; else secondBlock;"></div>
@@ -60,7 +60,7 @@ INTERPOLATION with Function: {{interpolatefun()}}
      <div *ngSwitchDefault>Declare In TS</div>
    </div>
 
-   <br> <br>
+   <!-- <br> <br>
    <u>ngSwitch Dynamic-Example</u>
    <br><br>
    <div [ngSwitch]="current">
@@ -72,7 +72,7 @@ INTERPOLATION with Function: {{interpolatefun()}}
      <div *ngSwitchCase="'Friday'">You Picked yellow</div>
      <div *ngSwitchCase="'Saturday'">You Picked yellow</div>
      <div *ngSwitchDefault>Declare In TS</div>
-   </div>
+   </div> -->
 
    <br> <br>
    <u>ngFor Static Example</u>
@@ -96,14 +96,15 @@ Acutual text - <b>{{Name}}</b><br>
 Uppercase - <b>{{Name | uppercase}}</b><br>
 Lowercase - <b>{{Name | lowercase}}</b><br>
 Capitalize - <b>{{Name | titlecase}}</b><br>
-Slice - <b>{{Name | slice:3}}</b><br>
+Slice - <b>{{Name | slice:2}}</b><br>
+Normal Format - <b>{{format}}</b><br>
 JSON Format - <b>{{format | json}}</b><br><br>
 
 Actual date- <b>{{date}}</b><br>
 Short - <b>{{ date | date:'short'}}</b><br> 
  ShortDate - <b>{{date | date:'shortDate'}}</b><br>
 ShortTime - <b>{{date | date:'shortTime'}}</b><br> 
-
+Indian Format - <b>{{date | date:'dd/MM/yyyy'}}</b><br>
 <br><br>
 <u>Service in Angular - Why Service?</u> <br>
 Dont Repeat same code frequently in various components<br>

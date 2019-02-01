@@ -31,7 +31,7 @@ export class AppComponent {
 public DisplayName='Kesvaraj';
 
 //ngFor Static Example 
- public cars=["Honda", "Suzuki","Mahendra","Renault","Ford","Benz","BMW", "Hyundai"];
+ public cars=["Honda", "Suzuki","Mahendra","Renault","Ford","Benz","BMW", "Hyundai","Skoda"];
 
  //child to parent  component interaction
 public message="";

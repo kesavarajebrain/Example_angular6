@@ -1,6 +1,5 @@
 
 import {throwError as observableThrowError, Observable} from 'rxjs';
-
 import {catchError} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
@@ -11,13 +10,6 @@ import {rdata} from './routedata';
   providedIn: 'root'
 })
 export class SampleService {
-
-
-
-  vgnbh 
-
-
-
   0
   //full url
   private full_url:string="http://localhost:4200/assets/sampledata/sample.data.json";
